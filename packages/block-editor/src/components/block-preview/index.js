@@ -77,7 +77,8 @@ function ScaledBlockPreview( { blocks, viewportWidth, padding = 0 } ) {
 		};
 	}, [] );
 
-	if ( ! blocks || blocks.length === 0 ) {
+	// previewScale sometimes returns -Infinity when rendered hidden.
+	if ( ! blocks || blocks.length === 0 || previewScale < 0 ) {
 		return null;
 	}
 
