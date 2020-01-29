@@ -64,9 +64,9 @@ export default function TreeGrid( { children, ...props } ) {
 			// Cycle to the next element and focus it.
 			let nextIndex;
 			if ( keyCode === LEFT ) {
-				nextIndex = ( currentColumnIndex - 1 ) < 0 ? focusablesInRow.length - 1 : currentColumnIndex - 1;
+				nextIndex = ( currentColumnIndex - 1 ) < 0 ? 0 : currentColumnIndex - 1;
 			} else {
-				nextIndex = ( currentColumnIndex + 1 ) >= focusablesInRow.length ? 0 : currentColumnIndex + 1;
+				nextIndex = ( currentColumnIndex + 1 ) >= focusablesInRow.length ? focusablesInRow.length - 1 : currentColumnIndex + 1;
 			}
 
 			focusablesInRow[ nextIndex ].focus();
