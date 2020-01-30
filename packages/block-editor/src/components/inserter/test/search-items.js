@@ -71,19 +71,19 @@ describe( 'searchItems', () => {
 		] );
 	} );
 
-	it( 'should match words using also patterns and return all matched patterns', () => {
-		const filteredItems = searchItems( items, categories, collections, 'pattern' );
+	it( 'should match words using also variations and return all matched variations', () => {
+		const filteredItems = searchItems( items, categories, collections, 'variation' );
 
 		expect( filteredItems ).toHaveLength( 1 );
-		expect( filteredItems[ 0 ].patterns ).toHaveLength( 3 );
+		expect( filteredItems[ 0 ].variations ).toHaveLength( 3 );
 	} );
 
-	it( 'should match words using also patterns and filter out unmatched patterns', () => {
-		const filteredItems = searchItems( items, categories, collections, 'patterns two three' );
+	it( 'should match words using also variations and filter out unmatched variations', () => {
+		const filteredItems = searchItems( items, categories, collections, 'variations two three' );
 
 		expect( filteredItems ).toHaveLength( 1 );
-		expect( filteredItems[ 0 ].patterns ).toHaveLength( 2 );
-		expect( filteredItems[ 0 ].patterns[ 0 ].title ).toBe( 'Pattern Two' );
-		expect( filteredItems[ 0 ].patterns[ 1 ].title ).toBe( 'Pattern Three' );
+		expect( filteredItems[ 0 ].variations ).toHaveLength( 2 );
+		expect( filteredItems[ 0 ].variations[ 0 ].title ).toBe( 'Variation Two' );
+		expect( filteredItems[ 0 ].variations[ 1 ].title ).toBe( 'Variation Three' );
 	} );
 } );

@@ -9,16 +9,16 @@ import classnames from 'classnames';
 import { __ } from '@wordpress/i18n';
 import { Button, Placeholder } from '@wordpress/components';
 
-function BlockPatternPicker( {
+function BlockVariationPicker( {
 	icon = 'layout',
-	label = __( 'Choose pattern' ),
-	instructions = __( 'Select a pattern to start with.' ),
-	patterns,
+	label = __( 'Choose variation' ),
+	instructions = __( 'Select a variation to start with.' ),
+	variations,
 	onSelect,
 	allowSkip,
 } ) {
-	const classes = classnames( 'block-editor-block-pattern-picker', {
-		'has-many-patterns': patterns.length > 4,
+	const classes = classnames( 'block-editor-block-variation-picker', {
+		'has-many-variations': variations.length > 4,
 	} );
 
 	return (
@@ -28,23 +28,23 @@ function BlockPatternPicker( {
 			 * Safari+VoiceOver won't announce the list otherwise.
 			 */
 			/* eslint-disable jsx-a11y/no-redundant-roles */ }
-			<ul className="block-editor-block-pattern-picker__patterns" role="list">
-				{ patterns.map( ( pattern ) => (
-					<li key={ pattern.name }>
+			<ul className="block-editor-block-variation-picker__variations" role="list">
+				{ variations.map( ( variation ) => (
+					<li key={ variation.name }>
 						<Button
 							isSecondary
-							icon={ pattern.icon }
+							icon={ variation.icon }
 							iconSize={ 48 }
-							onClick={ () => onSelect( pattern ) }
-							className="block-editor-block-pattern-picker__pattern"
-							label={ pattern.title }
+							onClick={ () => onSelect( variation ) }
+							className="block-editor-block-variation-picker__variation"
+							label={ variation.title }
 						/>
 					</li>
 				) ) }
 			</ul>
 			{ /* eslint-enable jsx-a11y/no-redundant-roles */ }
 			{ allowSkip && (
-				<div className="block-editor-block-pattern-picker__skip">
+				<div className="block-editor-block-variation-picker__skip">
 					<Button isLink onClick={ () => onSelect() }>
 						{ __( 'Skip' ) }
 					</Button>
@@ -54,4 +54,4 @@ function BlockPatternPicker( {
 	);
 }
 
-export default BlockPatternPicker;
+export default BlockVariationPicker;

@@ -53,7 +53,7 @@ export const searchItems = ( items, categories, collections, searchTerm ) => {
 	}
 
 	return items
-		.filter( ( { name, title, category, keywords = [], patterns = [] } ) => {
+		.filter( ( { name, title, category, keywords = [], variations = [] } ) => {
 			let unmatchedTerms = removeMatchingTerms( normalizedSearchTerms, title );
 
 			if ( unmatchedTerms.length === 0 ) {
@@ -82,33 +82,33 @@ export const searchItems = ( items, categories, collections, searchTerm ) => {
 
 			unmatchedTerms = removeMatchingTerms(
 				unmatchedTerms,
-				patterns.map( ( pattern ) => pattern.title ).join( ' ' )
+				variations.map( ( variation ) => variation.title ).join( ' ' )
 			);
 
 			return unmatchedTerms.length === 0;
 		} )
 		.map( ( item ) => {
-			if ( isEmpty( item.patterns ) ) {
+			if ( isEmpty( item.variations ) ) {
 				return item;
 			}
 
-			const matchedPatterns = item.patterns.filter( ( pattern ) => {
+			const matchedVariations = item.variations.filter( ( variation ) => {
 				return (
 					intersectionWith(
 						normalizedSearchTerms,
-						normalizeSearchTerm( pattern.title ),
+						normalizeSearchTerm( variation.title ),
 						( termToMatch, labelTerm ) => labelTerm.includes( termToMatch )
 					).length > 0
 				);
 			} );
-			// When no partterns matched, fallback to all patterns.
-			if ( isEmpty( matchedPatterns ) ) {
+			// When no partterns matched, fallback to all variations.
+			if ( isEmpty( matchedVariations ) ) {
 				return item;
 			}
 
 			return {
 				...item,
-				patterns: matchedPatterns,
+				variations: matchedVariations,
 			};
 		} );
 };

@@ -137,7 +137,7 @@ export default compose( [
 		const { getBlockRootClientId, hasInserterItems, __experimentalGetAllowedBlocks } = select(
 			'core/block-editor'
 		);
-		const { __experimentalGetBlockPatterns: getBlockPatterns } = select( 'core/blocks' );
+		const { __experimentalGetBlockVariations: getBlockVariations } = select( 'core/blocks' );
 
 		rootClientId = rootClientId || getBlockRootClientId( clientId ) || undefined;
 
@@ -145,7 +145,7 @@ export default compose( [
 
 		const hasSingleBlockType =
 			size( allowedBlocks ) === 1 &&
-			size( getBlockPatterns( allowedBlocks[ 0 ].name, 'inserter' ) ) === 0;
+			size( getBlockVariations( allowedBlocks[ 0 ].name, 'inserter' ) ) === 0;
 
 		let allowedBlockType = false;
 		if ( hasSingleBlockType ) {
