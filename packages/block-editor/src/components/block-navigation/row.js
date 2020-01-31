@@ -42,7 +42,7 @@ export default function BlockNavigationRow( { block, onClick, isSelected, positi
 	const animateOnChange = position;
 	const style = useMovingAnimation( wrapper, isSelected, adjustScrolling, enableAnimation, animateOnChange );
 
-	const hasSiblings = siblingCount > 0;
+	const hasSiblings = siblingCount > 1;
 	const hasVisibleMovers = isHovered || isSelected || isFocused;
 	const moverClassName = classnames( 'block-editor-block-navigation-row__mover-button', { 'is-visible': hasVisibleMovers } );
 
