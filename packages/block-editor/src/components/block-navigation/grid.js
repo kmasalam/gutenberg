@@ -4,6 +4,11 @@
 import { map, compact } from 'lodash';
 
 /**
+ * WordPress dependencies
+ */
+import { Fragment } from '@wordpress/element';
+
+/**
  * Internal dependencies
  */
 import TreeGrid from '../tree-grid';
@@ -33,9 +38,8 @@ function BlockNavigationRows( props ) {
 				const hasNestedBlocks = showNestedBlocks && !! innerBlocks && !! innerBlocks.length;
 
 				return (
-					<>
+					<Fragment key={ clientId }>
 						<BlockNavigationRow
-							key={ clientId }
 							block={ block }
 							onClick={ () => selectBlock( clientId ) }
 							isSelected={ selectedBlockClientId === clientId }
@@ -56,7 +60,7 @@ function BlockNavigationRows( props ) {
 								level={ level + 1 }
 							/>
 						) }
-					</>
+					</Fragment>
 				);
 			} ) }
 			{ hasAppender && <BlockNavigationAppenderRow parentBlockClientId={ parentBlockClientId } /> }
