@@ -39,7 +39,6 @@ import { Fragment, useState, useEffect } from '@wordpress/element';
  * Internal dependencies
  */
 import { toolbarSubmenuIcon, itemSubmenuIcon } from './icons';
-/* eslint-enable import/no-extraneous-dependencies */
 
 function NavigationLinkEdit( {
 	attributes,
@@ -186,6 +185,14 @@ function NavigationLinkEdit( {
 										// tests for unexpected values and throw accordingly.
 										if ( null === entity || undefined === entity ) {
 											throw new TypeError( 'API response returned invalid entity.', entity );
+										}
+
+										const requiredEntityProps = ['id', 'title', 'link'];
+
+										const entityMissingProperty = requiredEntityProps.find(entityProp => !entity.hasOwnProperty(entityProp));
+
+										if (Boolean(entityMissingProperty)) {
+											throw new TypeError(`API response returned invalid entity. Missing required property "${entityMissingProperty}".`, entity);
 										}
 
 										return {
