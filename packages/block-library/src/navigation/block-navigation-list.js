@@ -2,7 +2,7 @@
  * WordPress dependencies
  */
 import {
-	__experimentalBlockNavigationList,
+	__experimentalBlockNavigationGrid,
 } from '@wordpress/block-editor';
 import {
 	useSelect,
@@ -30,7 +30,7 @@ export default function BlockNavigationList( { clientId } ) {
 	} = useDispatch( 'core/block-editor' );
 
 	return (
-		<__experimentalBlockNavigationList
+		<__experimentalBlockNavigationGrid
 			blocks={ [ block ] }
 			selectedBlockClientId={ selectedBlockClientId }
 			selectBlock={ selectBlock }

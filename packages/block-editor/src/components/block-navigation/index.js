@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import BlockNavigationList from './list';
+import BlockNavigationGrid from './grid';
 
 function BlockNavigation( { rootBlock, rootBlocks, selectedBlockClientId, selectBlock } ) {
 	if ( ! rootBlocks || rootBlocks.length === 0 ) {
@@ -31,7 +31,7 @@ function BlockNavigation( { rootBlock, rootBlocks, selectedBlockClientId, select
 		<div className="block-editor-block-navigation__container">
 			<p className="block-editor-block-navigation__label">{ __( 'Block navigation' ) }</p>
 			{ hasHierarchy && (
-				<BlockNavigationList
+				<BlockNavigationGrid
 					blocks={ [ rootBlock ] }
 					selectedBlockClientId={ selectedBlockClientId }
 					selectBlock={ selectBlock }
@@ -39,7 +39,7 @@ function BlockNavigation( { rootBlock, rootBlocks, selectedBlockClientId, select
 				/>
 			) }
 			{ ! hasHierarchy && (
-				<BlockNavigationList
+				<BlockNavigationGrid
 					blocks={ rootBlocks }
 					selectedBlockClientId={ selectedBlockClientId }
 					selectBlock={ selectBlock }
