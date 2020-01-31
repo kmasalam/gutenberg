@@ -2,6 +2,8 @@
  * External dependencies
  */
 import { size } from 'lodash';
+import classnames from 'classnames';
+
 /**
  * WordPress dependencies
  */
@@ -111,7 +113,12 @@ class Inserter extends Component {
 	}
 
 	render() {
-		const { position, hasSingleBlockType, insertOnlyAllowedBlock } = this.props;
+		const {
+			isAppender,
+			position,
+			hasSingleBlockType,
+			insertOnlyAllowedBlock,
+		} = this.props;
 
 		if ( hasSingleBlockType ) {
 			return this.renderToggle( { onToggle: insertOnlyAllowedBlock } );
@@ -120,7 +127,10 @@ class Inserter extends Component {
 		return (
 			<Dropdown
 				className="block-editor-inserter"
-				contentClassName="block-editor-inserter__popover"
+				contentClassName={ classnames(
+					'block-editor-inserter__popover',
+					{ 'is-from-toolbar': !isAppender }
+				) }
 				position={ position }
 				onToggle={ this.onToggle }
 				expandOnMobile
