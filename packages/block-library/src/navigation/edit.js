@@ -94,7 +94,6 @@ function Navigation( {
 				id,
 				url,
 				label: ! title.rendered ? __( '(no title)' ) : escape( title.rendered ),
-				title: ! title.raw ? __( '(no title)' ) : escape( title.raw ),
 				opensInNewTab: false,
 			} )
 		);
