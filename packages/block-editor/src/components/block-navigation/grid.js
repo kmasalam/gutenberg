@@ -28,8 +28,8 @@ function BlockNavigationRows( props ) {
 	} = props;
 
 	const isTreeRoot = ! parentBlockClientId;
-	const hasAppender = showAppender && blocks.length > 0 && ! isTreeRoot;
 	const filteredBlocks = compact( blocks );
+	const hasAppender = showAppender && filteredBlocks.length > 0 && ! isTreeRoot;
 
 	return (
 		<>
