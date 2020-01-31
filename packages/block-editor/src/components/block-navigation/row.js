@@ -23,6 +23,8 @@ import BlockIcon from '../block-icon';
 import { MoveUpButton, MoveDownButton } from '../block-mover/mover-buttons';
 import useMovingAnimation from '../use-moving-animation';
 
+const AnimatedTreeGridRow = animated( TreeGridRow );
+
 export default function BlockNavigationRow( { block, onClick, isSelected, position, level, siblingCount, showBlockMovers } ) {
 	const [ isHovered, setIsHovered ] = useState( false );
 	const [ isFocused, setIsFocused ] = useState( false );
@@ -39,7 +41,6 @@ export default function BlockNavigationRow( { block, onClick, isSelected, positi
 	const enableAnimation = true;
 	const animateOnChange = position;
 	const style = useMovingAnimation( wrapper, isSelected, adjustScrolling, enableAnimation, animateOnChange );
-	const AnimatedTreeGridRow = animated( TreeGridRow );
 
 	const hasSiblings = siblingCount > 0;
 	const hasVisibleMovers = isHovered || isSelected || isFocused;
