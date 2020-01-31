@@ -61,30 +61,39 @@ export default function BlockNavigationRow( { block, onClick, isSelected, positi
 			setSize={ siblingCount }
 		>
 			<TreeGridCell>
-				<Button
-					className="block-editor-block-navigation-row__select-button"
-					onClick={ onClick }
-				>
-					<BlockIcon icon={ blockType.icon } showColors />
-					{ blockDisplayName }
-					{ isSelected && <span className="screen-reader-text">{ __( '(selected block)' ) }</span> }
-				</Button>
+				{ ( props ) => (
+					<Button
+						className="block-editor-block-navigation-row__select-button"
+						onClick={ onClick }
+						{ ...props }
+					>
+						<BlockIcon icon={ blockType.icon } showColors />
+						{ blockDisplayName }
+						{ isSelected && <span className="screen-reader-text">{ __( '(selected block)' ) }</span> }
+					</Button>
+				) }
 			</TreeGridCell>
 			{ showBlockMovers && hasSiblings && (
 				<>
 					<TreeGridCell>
-						<MoveUpButton
-							__experimentalOrientation="vertical"
-							clientIds={ [ clientId ] }
-							className={ moverClassName }
-						/>
+						{ ( props ) => (
+							<MoveUpButton
+								__experimentalOrientation="vertical"
+								clientIds={ [ clientId ] }
+								className={ moverClassName }
+								{ ...props }
+							/>
+						) }
 					</TreeGridCell>
 					<TreeGridCell>
-						<MoveDownButton
-							__experimentalOrientation="vertical"
-							clientIds={ [ clientId ] }
-							className={ moverClassName }
-						/>
+						{ ( props ) => (
+							<MoveDownButton
+								__experimentalOrientation="vertical"
+								clientIds={ [ clientId ] }
+								className={ moverClassName }
+								{ ...props }
+							/>
+						) }
 					</TreeGridCell>
 				</>
 			) }

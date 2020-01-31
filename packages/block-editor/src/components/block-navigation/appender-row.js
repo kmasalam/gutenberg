@@ -8,10 +8,13 @@ export default function BlockNavigationAppenderRow( { parentBlockClientId } ) {
 	return (
 		<TreeGridRow className="block-editor-block-navigation-appender-row">
 			<TreeGridCell>
-				<ButtonBlockAppender
-					rootClientId={ parentBlockClientId }
-					__experimentalSelectBlockOnInsert={ false }
-				/>
+				{ ( props ) => (
+					<ButtonBlockAppender
+						rootClientId={ parentBlockClientId }
+						__experimentalSelectBlockOnInsert={ false }
+						{ ...props }
+					/>
+				) }
 			</TreeGridCell>
 		</TreeGridRow>
 	);
