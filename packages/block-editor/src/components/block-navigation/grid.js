@@ -24,7 +24,7 @@ function BlockNavigationRows( props ) {
 		showBlockMovers,
 		showNestedBlocks,
 		parentBlockClientId,
-		level = 0,
+		level = 1,
 	} = props;
 
 	const isTreeRoot = ! parentBlockClientId;
@@ -44,7 +44,7 @@ function BlockNavigationRows( props ) {
 							onClick={ () => selectBlock( clientId ) }
 							isSelected={ selectedBlockClientId === clientId }
 							level={ level }
-							position={ index }
+							position={ index + 1 }
 							siblingCount={ filteredBlocks.length }
 							showBlockMovers={ showBlockMovers }
 						/>
